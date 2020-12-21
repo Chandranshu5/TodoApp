@@ -1,17 +1,19 @@
 import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, TextInput, Alert} from 'react-native'
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Entypo';
+import Icon1 from 'react-native-vector-icons/Feather';
+
 
 function Task(props) {
 
-    // Alert Box
+    // Task Completed Alert Box
     
     const completeTask = () => {
         Alert.alert(
           
-          'Completed',
+          'Complete!',
           
-          'Task has been completed!',
+          'Task has been marked completed!',
           [
             {
               text: 'OK',
@@ -22,6 +24,28 @@ function Task(props) {
         );
       };
       
+    // Task delete alert box
+
+    const deleteTask = () => {
+        Alert.alert(
+          //title
+          'Are you sure?',
+          //body
+          'Do you want to delete this task?',
+          [
+            {
+              text: 'Yes',
+              onPress: () => props.delete(),
+            },
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'), style: 'cancel'
+            },
+          ],
+          {cancelable: true},
+          //clicking out side of alert will not cancel
+        );
+      };
 
     return (
 
@@ -29,7 +53,7 @@ function Task(props) {
 
         <View style={styles.taskWrapper}>
             <TouchableOpacity onPress= {completeTask}>
-                <Icon
+                <Icon1
                     name={props.checked ? "check" : "square"}
                     size={28}
                     color="#40bcd8"
@@ -44,16 +68,15 @@ function Task(props) {
             </View>
                 
             <Icon
-                name="trash-2"
+                name="trash"
                 size={25}
                 color="#f64740"
-                onPress={props.delete}
+                onPress = {deleteTask}
                 style={{ marginLeft: 'auto', marginRight: 15 }} />
         </View>
         
     );
 }
-
 
 export default Task
 

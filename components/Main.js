@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Entypo';
+import Icon1 from 'react-native-vector-icons/AntDesign';
 import Task from '../components/Task'
 
 
@@ -34,6 +35,17 @@ const App = () => {
       })
     )
   }
+
+// Setting mark uncompleted
+// const handleUnchecked = (id) => {
+//   setTodos(
+//     todos.map((todo) => {
+//       if (todo.key === id) todo.unchecked =! todo.unchecked;
+//       return todo;
+//     })
+//   )
+// }
+
   return (
     <ImageBackground style={{ width: '100%', height: '100%', flex: 1, backgroundColor: '#100007' }}>
       <View style={styles.container}>
@@ -48,7 +60,7 @@ const App = () => {
             value={value}
           />
           <TouchableOpacity onPress={() => handleAddTodo()}>
-            <Icon name="plus" size={30} color="#40bcd8" style={{ marginLeft: 15 }} />
+            <Icon name="squared-plus" size={30} color="#40bcd8" style={{ marginLeft: 15 }} />
           </TouchableOpacity>
         </View>
 
@@ -62,6 +74,7 @@ const App = () => {
                 key={task.key}
                 checked={task.checked}
                 setChecked={() => handleChecked(task.key)}
+                // setUnchecked={() => handleUnchecked(task.key)}
                 delete={() => handleDeleteTodo(task.key)}
               />
             ))
