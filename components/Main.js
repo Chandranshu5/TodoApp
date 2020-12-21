@@ -36,16 +36,6 @@ const App = () => {
     )
   }
 
-// Setting mark uncompleted
-// const handleUnchecked = (id) => {
-//   setTodos(
-//     todos.map((todo) => {
-//       if (todo.key === id) todo.unchecked =! todo.unchecked;
-//       return todo;
-//     })
-//   )
-// }
-
   return (
     <ImageBackground style={{ width: '100%', height: '100%', flex: 1, backgroundColor: '#100007' }}>
       <View style={styles.container}>
@@ -74,7 +64,6 @@ const App = () => {
                 key={task.key}
                 checked={task.checked}
                 setChecked={() => handleChecked(task.key)}
-                // setUnchecked={() => handleUnchecked(task.key)}
                 delete={() => handleDeleteTodo(task.key)}
               />
             ))
